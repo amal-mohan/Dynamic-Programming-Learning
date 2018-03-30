@@ -1,0 +1,2 @@
+In Coin Row Problem we take N coins as input and calculate the maximum sum of values of coins with the following constraint.
+-adjacent coins cannot be selected. If Xth coin is chosen, (X-1)th and (X+1)th coin cannot be selected.

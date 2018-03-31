@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DynamicProgramming.Problems;
 
 namespace DynamicProgramming
 {
@@ -15,6 +16,7 @@ namespace DynamicProgramming
             Console.WriteLine("0. Read Me");
             Console.WriteLine("1. Generate Fibonacci Series");
             Console.WriteLine("2. Coin Row Problem");
+            Console.WriteLine("3. Change Making Problem");
 
             string option =Console.ReadLine();
             switch(option)
@@ -22,6 +24,7 @@ namespace DynamicProgramming
                 case "0":
                     Console.WriteLine("1. Fibonacci Series");
                     Console.WriteLine("2. Coin Row Problem");
+                    Console.WriteLine("3. Change Making Problem");
                     string Helpoption = Console.ReadLine();
                     switch(Helpoption)
                     {
@@ -35,6 +38,13 @@ namespace DynamicProgramming
                         case "2":
                             //to be implemented.
                             Console.WriteLine("");
+                            break;
+                        case "3":
+                            //to be implemented.
+                            Console.WriteLine("");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice");
                             break;
                     }
                     break;
@@ -86,6 +96,55 @@ namespace DynamicProgramming
                     CoinRow Coins = new CoinRow(N, CoinValues);
                     int MaxSumValue = Coins.CalculateMaxValue();
                     Console.WriteLine("Maximum value of the Coins by not choosing adjacent coins is: "+MaxSumValue);
+                    break;
+                case "3":
+                    Console.WriteLine("Enter Number of coins");
+                    try
+                    {
+                        N = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine("Exception in data: " + e.Message);
+                        Console.ReadKey();
+                        Environment.Exit(1);
+                    }
+                    int []CoinValue = new int[N];
+                    Console.WriteLine("Enter " + N + " values coin values");
+                    for (int i = 0; i < N; i++)
+                    {
+                        try
+                        {
+                            Console.Write((i + 1) + " coin value: ");
+                            CoinValue[i] = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Exception in data: " + e.Message);
+                            Console.ReadKey();
+                            Environment.Exit(1);
+                        }
+                    }
+                    Console.WriteLine("Enter denomination to be found");
+                    int Denomination = 0;
+                    try
+                    {
+                        Denomination = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Exception in data: " + e.Message);
+                        Console.ReadKey();
+                        Environment.Exit(1);
+                    }
+                    ChangeMaking Chg = new ChangeMaking(N,CoinValue,Denomination);
+                    int []ResultDenomination=Chg.CalculateDenominations();
+                    Console.WriteLine("Total number of coins required: " + ResultDenomination.Count());
+                    Console.WriteLine("The values of coins are: ");
+                    foreach(int i in ResultDenomination)
+                    {
+                        Console.Write(i + " ");
+                    }
                     break;
                 default: Console.WriteLine("Invalid choice");
                     break;

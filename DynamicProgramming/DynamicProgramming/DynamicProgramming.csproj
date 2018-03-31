@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OutputGenerator.cs" />
+    <Compile Include="Problems\ChangeMaking.cs" />
     <Compile Include="Problems\CoinRow.cs" />
     <Compile Include="Problems\Fibonacci.cs" />
     <Compile Include="DPMain.cs" />

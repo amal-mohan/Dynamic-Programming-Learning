@@ -17,6 +17,8 @@ namespace DynamicProgramming
             Console.WriteLine("1. Generate Fibonacci Series");
             Console.WriteLine("2. Coin Row Problem");
             Console.WriteLine("3. Change Making Problem");
+            Console.WriteLine("4. Coin Collecting Problem");
+
 
             string option =Console.ReadLine();
             switch(option)
@@ -25,6 +27,7 @@ namespace DynamicProgramming
                     Console.WriteLine("1. Fibonacci Series");
                     Console.WriteLine("2. Coin Row Problem");
                     Console.WriteLine("3. Change Making Problem");
+                    Console.WriteLine("4. Coin Collecting Problem");
                     string Helpoption = Console.ReadLine();
                     switch(Helpoption)
                     {
@@ -43,6 +46,11 @@ namespace DynamicProgramming
                             //to be implemented.
                             Console.WriteLine("");
                             break;
+                        case "4":
+                            //to be implemented.
+                            Console.WriteLine("");
+                            break;
+
                         default:
                             Console.WriteLine("Invalid choice");
                             break;
@@ -145,6 +153,54 @@ namespace DynamicProgramming
                     {
                         Console.Write(i + " ");
                     }
+                    break;
+                case "4":
+                    Console.WriteLine("Enter number of rows");
+                    int rows = 0, cols = 0;
+                    try
+                    {
+                        rows = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine("Exception in data" + e.Message);
+                        Console.ReadKey();
+                        Environment.Exit(1);
+                    }
+                    Console.WriteLine("Enter number of columns");
+                    try
+                    {    
+                        cols = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Exception in data" + e.Message);
+                        Console.ReadKey();
+                        Environment.Exit(1);
+                    }
+                    int[,] matrix = new int[rows,cols];
+                    Console.WriteLine("Enter 1 for rows with coins and 0 otherwise");
+                    for(int i=0;i<rows;i++)
+                    {
+                        Console.WriteLine("Row " + (i + 1));
+                        for(int j=0;j<cols;j++)
+                        {
+                            try
+                            {
+                                matrix[i, j] = Convert.ToInt32(Console.ReadLine());
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Exception in data" + e.Message);
+                                Console.ReadKey();
+                                Environment.Exit(1);
+                            }
+                        }
+                    }
+                    CoinCollecting CoinCollector = new CoinCollecting(matrix, rows, cols);
+                    int coins = CoinCollector.MaximumCoinsCollected();
+                    Console.WriteLine("Maximum coins that can be collected by a robot navigating left and down is: " + coins);
+
                     break;
                 default: Console.WriteLine("Invalid choice");
                     break;

@@ -31,7 +31,7 @@ namespace DynamicProgramming.Problems
             for (int i=1;i<=denomination;i++)
             {
                 j = 0;
-                temp = coinValue[n-1]+1;
+                temp = denomination+1;
                 temp1 = 0;
                 while (j<n&&i>=coinValue[j])
                 {

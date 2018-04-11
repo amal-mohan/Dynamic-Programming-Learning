@@ -18,8 +18,9 @@ namespace DynamicProgramming
             Console.WriteLine("2. Coin Row Problem");
             Console.WriteLine("3. Change Making Problem");
             Console.WriteLine("4. Coin Collecting Problem");
+            Console.WriteLine("5. Rod Cutting Problem");
 
-
+  
             string option =Console.ReadLine();
             switch(option)
             {
@@ -28,8 +29,9 @@ namespace DynamicProgramming
                     Console.WriteLine("2. Coin Row Problem");
                     Console.WriteLine("3. Change Making Problem");
                     Console.WriteLine("4. Coin Collecting Problem");
-                    string Helpoption = Console.ReadLine();
-                    switch(Helpoption)
+                    Console.WriteLine("5. Rod Cutting Problem");
+                    string HelpOption = Console.ReadLine();
+                    switch(HelpOption)
                     {
                         case "1":
                             //read from file rather than hard coding
@@ -200,7 +202,44 @@ namespace DynamicProgramming
                     CoinCollecting CoinCollector = new CoinCollecting(matrix, rows, cols);
                     int coins = CoinCollector.MaximumCoinsCollected();
                     Console.WriteLine("Maximum coins that can be collected by a robot navigating left and down is: " + coins);
-
+                    break;
+                case "5":
+                    Console.WriteLine("Enter Length of Rod to be cut");
+                    try
+                    {
+                        N = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Exception in data: " + e.Message);
+                        Console.ReadKey();
+                        Environment.Exit(1);
+                    }
+                    int[] RodPrice = new int[N];
+                    Console.WriteLine("Enter price of Pieces");
+                    for (int i = 0; i < N; i++)
+                    {
+                        try
+                        {
+                            Console.Write((i + 1) + " piece's price value: ");
+                            RodPrice[i] = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Exception in data: " + e.Message);
+                            Console.ReadKey();
+                            Environment.Exit(1);
+                        }
+                    }
+                    RodCutting RodCut = new RodCutting(N, RodPrice);
+                    Tuple<int[],int> RodPieces = RodCut.CalculateOptimalCuts();
+                    Console.WriteLine("Total number of cuts required: " + RodPieces.Item1.Count());
+                    Console.WriteLine("The length of pieces are: ");
+                    foreach (int i in RodPieces.Item1)
+                    {
+                        Console.Write(i + " ");
+                    }
+                    Console.WriteLine("\nMaximum value obtained by cutting rods is:"+ RodPieces.Item2);
                     break;
                 default: Console.WriteLine("Invalid choice");
                     break;

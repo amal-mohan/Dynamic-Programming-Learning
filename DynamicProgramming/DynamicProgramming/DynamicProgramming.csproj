@@ -48,6 +48,7 @@
     <Compile Include="Problems\CoinRow.cs" />
     <Compile Include="Problems\Fibonacci.cs" />
     <Compile Include="DPMain.cs" />
+    <Compile Include="Problems\RodCutting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
